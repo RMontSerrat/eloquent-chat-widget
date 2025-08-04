@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eloquent Chat Widget - Exemplo</title>
+    <title>Eloquent Chat Widget - Demo</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -154,82 +154,82 @@
     <div class="container">
         <h1>🚀 Eloquent Chat Widget</h1>
         <p class="subtitle">
-            Widget de chat moderno com IA integrada.<br>
-            <strong>Experimente agora!</strong> Clique no ícone de chat no canto da tela.
+            Modern chat widget with integrated AI.<br>
+            <strong>Try it now!</strong> Click the chat icon in the corner of the screen.
         </p>
         
         <div class="features">
             <div class="feature">
-                <h3>🤖 IA Integrada</h3>
-                <p>Respostas inteligentes automáticas para melhor experiência do usuário</p>
+                <h3>🤖 AI Integrated</h3>
+                <p>Smart automatic responses for better user experience</p>
             </div>
             <div class="feature">
-                <h3>🎨 Customizável</h3>
-                <p>Configure cores, textos, posição e aparência conforme sua marca</p>
+                <h3>🎨 Customizable</h3>
+                <p>Configure colors, texts, position and appearance to match your brand</p>
             </div>
             <div class="feature">
-                <h3>💾 Persistente</h3>
-                <p>Histórico de conversas salvo localmente para continuidade</p>
+                <h3>💾 Persistent</h3>
+                <p>Chat history saved locally for continuity</p>
             </div>
             <div class="feature">
-                <h3>📱 Responsivo</h3>
-                <p>Funciona perfeitamente em desktop, tablet e mobile</p>
+                <h3>📱 Responsive</h3>
+                <p>Works perfectly on desktop, tablet and mobile</p>
             </div>
         </div>
         
         <div class="demo-controls">
-            <h3>🎛️ Controles da Demo</h3>
-            <p>Experimente as diferentes configurações em tempo real:</p>
+            <h3>🎛️ Demo Controls</h3>
+            <p>Try different configurations in real-time:</p>
             
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
                 <div class="control-group">
-                    <label for="title">Título do Chat:</label>
-                    <input type="text" id="title" value="Suporte ao Cliente" onchange="updateConfig()">
+                    <label for="title">Chat Title:</label>
+                    <input type="text" id="title" value="Customer Support" onchange="updateConfig()">
                 </div>
                 
                 <div class="control-group">
-                    <label for="subtitle">Subtítulo:</label>
-                    <input type="text" id="subtitle" value="Estamos aqui para ajudar" onchange="updateConfig()">
+                    <label for="subtitle">Subtitle:</label>
+                    <input type="text" id="subtitle" value="We're here to help" onchange="updateConfig()">
                 </div>
                 
                 <div class="control-group">
-                    <label for="position">Posição:</label>
+                    <label for="position">Position:</label>
                     <select id="position" onchange="updateConfig()">
-                        <option value="bottom-right">Inferior Direita</option>
-                        <option value="bottom-left">Inferior Esquerda</option>
-                        <option value="top-right">Superior Direita</option>
-                        <option value="top-left">Superior Esquerda</option>
+                        <option value="bottom-right">Bottom Right</option>
+                        <option value="bottom-left">Bottom Left</option>
+                        <option value="top-right">Top Right</option>
+                        <option value="top-left">Top Left</option>
                     </select>
                 </div>
                 
                 <div class="control-group">
-                    <label for="primaryColor">Cor Principal:</label>
+                    <label for="primaryColor">Primary Color:</label>
                     <input type="color" id="primaryColor" class="color-input" value="#0ea5e9" onchange="updateConfig()">
                 </div>
             </div>
             
             <div class="control-group">
-                <label>Status do Chat:</label>
+                <label>Chat Status:</label>
                 <div class="status-controls">
                     <button class="status-btn active" onclick="setStatus('online')">🟢 Online</button>
                     <button class="status-btn" onclick="setStatus('offline')">🔴 Offline</button>
-                    <button class="status-btn" onclick="setStatus('maintenance')">🔧 Manutenção</button>
+                    <button class="status-btn" onclick="setStatus('maintenance')">🔧 Maintenance</button>
                 </div>
             </div>
             
             <div style="text-align: center; margin-top: 2rem;">
-                <button class="cta" onclick="clearChat()">🗑️ Limpar Histórico</button>
-                <button class="cta" onclick="sendTestMessage()">💬 Enviar Mensagem Teste</button>
+                <button class="cta" onclick="clearChat()">🗑️ Clear History</button>
+                <button class="cta" onclick="sendTestMessage()">💬 Send Test Message</button>
             </div>
         </div>
         
         <div style="margin-top: 2rem; padding: 1rem; background: #e0f2fe; border-radius: 8px;">
-            <h4>📚 Como usar em seu site:</h4>
+            <h4>📚 How to use on your website:</h4>
             <pre style="text-align: left; background: #263238; color: #fff; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;script 
     src="https://unpkg.com/eloquent-chat-widget/dist/eloquent-chat-widget.umd.js"
     data-eloquent-chat
-    data-title="Seu Título"
-    data-subtitle="Seu Subtítulo"
+    data-title="Your Title"
+    data-subtitle="Your Subtitle"
     data-primary-color="#0ea5e9"&gt;
 &lt;/script&gt;
 &lt;link rel="stylesheet" href="https://unpkg.com/eloquent-chat-widget/dist/eloquent-chat-widget.css"&gt;</code></pre>
@@ -241,30 +241,30 @@
     <script src="./dist/eloquent-chat-widget.umd.js"></script>
     
     <script>
-        // Inicializar o widget
+        // Initialize the widget
         const widget = EloquentChatWidget.init({
             config: {
-                title: 'Suporte ao Cliente',
-                subtitle: 'Estamos aqui para ajudar',
+                title: 'Customer Support',
+                subtitle: 'We\'re here to help',
                 primaryColor: '#0ea5e9',
                 position: 'bottom-right',
-                welcomeMessage: '👋 Olá! Como posso ajudá-lo hoje?',
-                placeholder: 'Digite sua mensagem...',
-                offlineMessage: 'Estamos offline no momento. Deixe sua mensagem que retornaremos em breve!',
-                maintenanceMessage: '🔧 Sistema em manutenção. Voltamos logo!',
+                welcomeMessage: '👋 Hello! How can I help you today?',
+                placeholder: 'Type your message...',
+                offlineMessage: 'We\'re offline right now. Leave us a message and we\'ll get back to you soon!',
+                maintenanceMessage: '🔧 System under maintenance. We\'ll be back shortly!',
                 enablePersistence: true,
                 maxMessages: 50,
                 typingIndicatorDelay: 1000
             },
             onReady: () => {
-                console.log('✅ Chat widget carregado com sucesso!');
+                console.log('✅ Chat widget loaded successfully!');
             },
             onError: (error) => {
-                console.error('❌ Erro no chat widget:', error);
+                console.error('❌ Chat widget error:', error);
             }
         });
         
-        // Funções de controle
+        // Control functions
         function updateConfig() {
             const title = document.getElementById('title').value;
             const subtitle = document.getElementById('subtitle').value;
@@ -309,7 +309,7 @@
             const store = window.EloquentChatWidget.useChatStore?.getState?.() || {};
             if (store.clearMessages) {
                 store.clearMessages();
-                alert('💬 Histórico limpo com sucesso!');
+                alert('💬 Chat history cleared successfully!');
             }
         }
         
@@ -317,31 +317,31 @@
             const store = window.EloquentChatWidget.useChatStore?.getState?.() || {};
             if (store.addMessage) {
                 store.addMessage({
-                    content: '🤖 Esta é uma mensagem de teste automática! O widget está funcionando perfeitamente.',
+                    content: '🤖 This is an automatic test message! The widget is working perfectly.',
                     sender: 'assistant'
                 });
                 
-                // Abrir o widget se estiver fechado
+                // Open widget if closed
                 if (store.openWidget && !store.isOpen) {
                     store.openWidget();
                 }
             }
         }
         
-        // Easter egg - mensagem especial para desenvolvedores
+        // Easter egg - special message for developers
         console.log(`
 🚀 Eloquent Chat Widget Demo
 =============================
-Desenvolvido com ❤️ usando:
+Built with ❤️ using:
 • React + TypeScript
-• Zustand (Estado)
-• CSS Puro (Performance)
-• Hooks Personalizados
-• Arquitetura Modular
+• Zustand (State Management)
+• Pure CSS (Performance)
+• Custom Hooks
+• Modular Architecture
 
-📖 Documentação: README.md
+📖 Documentation: README.md
 🐛 Issues: GitHub Repository
-💬 Suporte: support@eloquentai.co
+💬 Support: support@eloquentai.co
         `);
     </script>
 </body>
