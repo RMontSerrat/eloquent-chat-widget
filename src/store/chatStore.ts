@@ -20,7 +20,7 @@ const defaultConfig: ChatWidgetConfig = {
   offlineMessage: 'We\'re currently offline. Leave us a message and we\'ll get back to you!',
   maintenanceMessage: 'Our chat service is temporarily under maintenance. Please try again later.',
   welcomeMessage: 'Hello! How can we help you today?',
-  primaryColor: '#0ea5e9',
+  primaryColor: '#6f33b7',
   secondaryColor: '#64748b',
 };
 

@@ -6,234 +6,35 @@
     <title>Eloquent Chat Widget - Demo</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Geist', sans-serif;
             margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            background: #f5f5f5;
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         
         .container {
-            background: white;
-            padding: 3rem;
-            border-radius: 12px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             text-align: center;
         }
         
         h1 {
             color: #333;
+            font-size: 1.5rem;
+            font-weight: 600;
             margin-bottom: 1rem;
-            font-size: 2.5rem;
-        }
-        
-        .subtitle {
-            color: #666;
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-        
-        .feature {
-            padding: 1.5rem;
-            background: #f8f9fa;
-            border-radius: 8px;
-            border-left: 4px solid #0ea5e9;
-        }
-        
-        .feature h3 {
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
-        
-        .feature p {
-            color: #666;
-            margin: 0;
-        }
-        
-        .cta {
-            background: #0ea5e9;
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 6px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            margin: 1rem;
-            transition: background-color 0.3s;
-        }
-        
-        .cta:hover {
-            background: #0284c7;
-        }
-        
-        .demo-controls {
-            margin: 2rem 0;
-            padding: 2rem;
-            background: #f1f5f9;
-            border-radius: 8px;
-        }
-        
-        .control-group {
-            margin: 1rem 0;
-            text-align: left;
-        }
-        
-        .control-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-            color: #333;
-        }
-        
-        .control-group input,
-        .control-group select {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-        
-        .color-input {
-            width: 60px !important;
-            padding: 0.25rem !important;
-            border: none;
-            border-radius: 4px;
-        }
-        
-        .status-controls {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin: 1rem 0;
-        }
-        
-        .status-btn {
-            padding: 0.5rem 1rem;
-            border: 1px solid #ddd;
-            background: white;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .status-btn.active {
-            background: #0ea5e9;
-            color: white;
-            border-color: #0ea5e9;
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                margin: 1rem;
-                padding: 2rem;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .features {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🚀 Eloquent Chat Widget</h1>
-        <p class="subtitle">
-            Modern chat widget with integrated AI.<br>
-            <strong>Try it now!</strong> Click the chat icon in the corner of the screen.
-        </p>
-        
-        <div class="features">
-            <div class="feature">
-                <h3>🤖 AI Integrated</h3>
-                <p>Smart automatic responses for better user experience</p>
-            </div>
-            <div class="feature">
-                <h3>🎨 Customizable</h3>
-                <p>Configure colors, texts, position and appearance to match your brand</p>
-            </div>
-            <div class="feature">
-                <h3>💾 Persistent</h3>
-                <p>Chat history saved locally for continuity</p>
-            </div>
-            <div class="feature">
-                <h3>📱 Responsive</h3>
-                <p>Works perfectly on desktop, tablet and mobile</p>
-            </div>
-        </div>
-        
-        <div class="demo-controls">
-            <h3>🎛️ Demo Controls</h3>
-            <p>Try different configurations in real-time:</p>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
-                <div class="control-group">
-                    <label for="title">Chat Title:</label>
-                    <input type="text" id="title" value="Customer Support" onchange="updateConfig()">
-                </div>
-                
-                <div class="control-group">
-                    <label for="subtitle">Subtitle:</label>
-                    <input type="text" id="subtitle" value="We're here to help" onchange="updateConfig()">
-                </div>
-                
-                <div class="control-group">
-                    <label for="position">Position:</label>
-                    <select id="position" onchange="updateConfig()">
-                        <option value="bottom-right">Bottom Right</option>
-                        <option value="bottom-left">Bottom Left</option>
-                        <option value="top-right">Top Right</option>
-                        <option value="top-left">Top Left</option>
-                    </select>
-                </div>
-                
-                <div class="control-group">
-                    <label for="primaryColor">Primary Color:</label>
-                    <input type="color" id="primaryColor" class="color-input" value="#0ea5e9" onchange="updateConfig()">
-                </div>
-            </div>
-            
-            <div class="control-group">
-                <label>Chat Status:</label>
-                <div class="status-controls">
-                    <button class="status-btn active" onclick="setStatus('online')">🟢 Online</button>
-                    <button class="status-btn" onclick="setStatus('offline')">🔴 Offline</button>
-                    <button class="status-btn" onclick="setStatus('maintenance')">🔧 Maintenance</button>
-                </div>
-            </div>
-            
-            <div style="text-align: center; margin-top: 2rem;">
-                <button class="cta" onclick="clearChat()">🗑️ Clear History</button>
-                <button class="cta" onclick="sendTestMessage()">💬 Send Test Message</button>
-            </div>
-        </div>
-        
-        <div style="margin-top: 2rem; padding: 1rem; background: #e0f2fe; border-radius: 8px;">
-            <h4>📚 How to use on your website:</h4>
-            <pre style="text-align: left; background: #263238; color: #fff; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;script 
-    src="https://unpkg.com/eloquent-chat-widget/dist/eloquent-chat-widget.umd.js"
-    data-eloquent-chat
-    data-title="Your Title"
-    data-subtitle="Your Subtitle"
-    data-primary-color="#0ea5e9"&gt;
-&lt;/script&gt;
-&lt;link rel="stylesheet" href="https://unpkg.com/eloquent-chat-widget/dist/eloquent-chat-widget.css"&gt;</code></pre>
-        </div>
+        <h1>Eloquent Chat Widget</h1>
+        <p>O widget de chat aparecerá no canto da tela. Clique nele para testar!</p>
     </div>
 
     <!-- Chat Widget -->
@@ -242,19 +43,12 @@
     
     <script>
         // Initialize the widget
-        const widget = EloquentChatWidget.init({
+        EloquentChatWidget.init({
             config: {
-                title: 'Customer Support',
+                title: 'Eloquent Chat',
                 subtitle: 'We\'re here to help',
-                primaryColor: '#0ea5e9',
                 position: 'bottom-right',
-                welcomeMessage: '👋 Hello! How can I help you today?',
-                placeholder: 'Type your message...',
-                offlineMessage: 'We\'re offline right now. Leave us a message and we\'ll get back to you soon!',
-                maintenanceMessage: '🔧 System under maintenance. We\'ll be back shortly!',
-                enablePersistence: true,
-                maxMessages: 50,
-                typingIndicatorDelay: 1000
+                placeholder: 'Type your message...'
             },
             onReady: () => {
                 console.log('✅ Chat widget loaded successfully!');
@@ -263,86 +57,6 @@
                 console.error('❌ Chat widget error:', error);
             }
         });
-        
-        // Control functions
-        function updateConfig() {
-            const title = document.getElementById('title').value;
-            const subtitle = document.getElementById('subtitle').value;
-            const position = document.getElementById('position').value;
-            const primaryColor = document.getElementById('primaryColor').value;
-            
-            widget.updateConfig({
-                title,
-                subtitle,
-                position,
-                primaryColor
-            });
-        }
-        
-        function setStatus(status) {
-            // Atualizar botões
-            document.querySelectorAll('.status-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            
-            // Usar o store diretamente para alterar status
-            const store = window.EloquentChatWidget.useChatStore?.getState?.() || {};
-            
-            switch(status) {
-                case 'online':
-                    if (store.setOnlineStatus) store.setOnlineStatus(true);
-                    if (store.setMaintenanceMode) store.setMaintenanceMode(false);
-                    break;
-                case 'offline':
-                    if (store.setOnlineStatus) store.setOnlineStatus(false);
-                    if (store.setMaintenanceMode) store.setMaintenanceMode(false);
-                    break;
-                case 'maintenance':
-                    if (store.setOnlineStatus) store.setOnlineStatus(true);
-                    if (store.setMaintenanceMode) store.setMaintenanceMode(true);
-                    break;
-            }
-        }
-        
-        function clearChat() {
-            const store = window.EloquentChatWidget.useChatStore?.getState?.() || {};
-            if (store.clearMessages) {
-                store.clearMessages();
-                alert('💬 Chat history cleared successfully!');
-            }
-        }
-        
-        function sendTestMessage() {
-            const store = window.EloquentChatWidget.useChatStore?.getState?.() || {};
-            if (store.addMessage) {
-                store.addMessage({
-                    content: '🤖 This is an automatic test message! The widget is working perfectly.',
-                    sender: 'assistant'
-                });
-                
-                // Open widget if closed
-                if (store.openWidget && !store.isOpen) {
-                    store.openWidget();
-                }
-            }
-        }
-        
-        // Easter egg - special message for developers
-        console.log(`
-🚀 Eloquent Chat Widget Demo
-=============================
-Built with ❤️ using:
-• React + TypeScript
-• Zustand (State Management)
-• Pure CSS (Performance)
-• Custom Hooks
-• Modular Architecture
-
-📖 Documentation: README.md
-🐛 Issues: GitHub Repository
-💬 Support: support@eloquentai.co
-        `);
     </script>
 </body>
 </html>
