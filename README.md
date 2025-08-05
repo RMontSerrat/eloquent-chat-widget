@@ -16,10 +16,8 @@ A modern, embeddable chat widget with AI integration for React applications. Bui
 
 ## 🎨 Design
 
-The widget follows [Eloquent AI](https://www.eloquentai.co/) design system with:
 - **Primary color**: `#f9f7f1`
 - **Primary font**: Erode (serif)
-- **Secondary font**: Geist (sans-serif)
 - Clean and modern interface
 - Smooth animations
 - Clear visual indicators (online/offline, maintenance)
