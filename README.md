@@ -64,7 +64,7 @@ EloquentChatWidget.init({
 ```
 
 
-### React Integration (Intercom-style)
+### React Integration
 
 ```tsx
 import React from 'react';
@@ -281,13 +281,6 @@ EloquentChatWidget.init({
 });
 ```
 
-## 🔐 Security
-
-- **Sanitization**: All inputs are sanitized
-- **CORS**: Configured for secure requests
-- **Storage**: Sensitive data is not stored
-- **CSP**: Compatible with Content Security Policy
-
 ## 📊 Analytics and Monitoring
 
 The widget can be easily integrated with analytics tools:
@@ -355,19 +348,7 @@ MIT © [Eloquent AI](https://www.eloquentai.co/)
 
 - 📧 Email: support@eloquentai.co
 - 🐛 Issues: [GitHub Issues](https://github.com/RMontSerrat/eloquent-chat-widget/issues)
-- 📖 Docs: [Complete Documentation](https://docs.eloquentai.co/chat-widget)
-- 💬 Discord: [Eloquent Community](https://discord.gg/eloquentai)
-
-## 🎯 Roadmap
-
-- [ ] Media message support (images, files)
-- [ ] Pre-defined conversation templates
-- [ ] Native integration with more LLMs (Claude, Gemini, etc.)
-- [ ] Analytics dashboard
-- [ ] Multi-language support
-- [ ] Native dark mode
-- [ ] CRM/Helpdesk integrations
 
 ---
 
-Built with ❤️ by the [Eloquent AI](https://www.eloquentai.co/) team
+Built with ❤️

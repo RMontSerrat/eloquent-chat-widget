@@ -50,7 +50,7 @@ export const TriggerButton: React.FC = () => {
         onClick={toggleWidget}
         variant="primary"
         size="icon"
-        className="elq:h-14 elq:w-14 elq:rounded-full elq:shadow-lg elq:hover:shadow-xl"
+        className="chat-widget-trigger elq:h-14 elq:w-14 elq:rounded-full elq:shadow-lg elq:hover:shadow-xl"
         style={{
           backgroundColor: config.primaryColor || '#007bff'
         }}

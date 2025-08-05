@@ -36,8 +36,8 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({
       <div className={cn(
         "elq:max-w-xs lg:elq:max-w-md elq:px-4 elq:py-3 elq:rounded-2xl elq:font-secondary",
         isUser 
-          ? "bg-primary elq:text-white elq:rounded-br-sm" 
-          : "bg-chat-secondary text-chat-primary elq:rounded-bl-sm"
+          ? "chat-message-bubble user bg-primary elq:text-white elq:rounded-br-sm" 
+          : "chat-message-bubble assistant bg-chat-secondary text-chat-primary elq:rounded-bl-sm"
       )}>
         <p className="elq:text-sm elq:leading-relaxed elq:whitespace-pre-wrap elq:mb-0">
           {message.content}

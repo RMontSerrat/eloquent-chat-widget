@@ -43,7 +43,7 @@ export const ChatWidget: React.FC = () => {
   };
 
   return (
-    <div className="elq:fixed elq:z-[9999] elq:font-secondary" style={{ ...getPositionStyles() }}>
+    <div className="chat-widget-container elq:fixed elq:z-[9999] elq:font-secondary" style={{ ...getPositionStyles() }}>
       <ChatWindow
         getWindowPositionStyles={getWindowPositionStyles}
       />
