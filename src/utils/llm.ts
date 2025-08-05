@@ -52,5 +52,5 @@ export const generateLLMResponseWithAPI = async (
 };
 
 export const validateApiKey = (apiKey: string): boolean => {
-  return Boolean(apiKey && apiKey.length > 0 && apiKey.startsWith('sk-'));
+  return Boolean(apiKey && apiKey.trim().length > 0 && apiKey.trim().startsWith('sk-'));
 };

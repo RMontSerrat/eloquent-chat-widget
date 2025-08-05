@@ -114,7 +114,13 @@ export const useChatStore = create<ChatStore>((set, get) => ({
 
     } catch (error) {
       setTyping(false);
-      setError(error instanceof Error ? error.message : 'Failed to send message');
+      // Provide user-friendly error message
+      const errorMessage = error instanceof Error && error.message.includes('OpenAI API request failed')
+        ? 'Failed to send message. Please try again later.'
+        : error instanceof Error 
+          ? error.message 
+          : 'Failed to send message';
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }

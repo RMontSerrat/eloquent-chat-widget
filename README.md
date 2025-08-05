@@ -153,44 +153,14 @@ EloquentChatWidget.init({
 - **TypeScript**: Complete typing for safety and productivity
 - **Modular CSS**: Isolated styles that don't interfere with host site
 
-### Available Hooks
-
-```typescript
-import { useChat, useChatConfig, useChatPersistence } from 'eloquent-chat-widget';
-
-// Main hook with all chat functionality
-const {
-  messages,
-  isOpen,
-  isOnline,
-  sendMessage,
-  toggleWidget,
-  // ... more properties
-} = useChat();
-
-// Configuration hook
-const {
-  config,
-  updateMode,
-  updateColors,
-  updateTexts
-} = useChatConfig();
-
-// Persistence hook
-const {
-  save,
-  load,
-  clear,
-  isLoading
-} = useChatPersistence();
-```
-
 ### Performance
 
-- **Bundle Size**: ~530KB (UMD) / ~865KB (ES) - including all dependencies
-- **CSS**: ~5KB compressed
+- **Bundle Size**: 366KB (UMD) / 599KB (ES) - including all dependencies
+- **Gzipped**: 119KB (UMD) / 146KB (ES) - optimized for production
+- **CSS**: 24KB (~4.4KB gzipped) - comprehensive styling
 - **Tree Shaking**: Supported for ES6 imports
 - **Lazy Loading**: On-demand loading
+- **Build Tool**: Vite for fast development and optimized builds
 
 ## 🔧 Development
 
@@ -209,6 +179,18 @@ npm run dev
 
 # Build for production
 npm run build
+
+# Preview build
+npm run preview
+
+# Run tests
+npm run test
+
+# Run tests with UI
+npm run test:ui
+
+# Run tests with coverage
+npm run test:coverage
 
 # Test package locally
 npm pack
