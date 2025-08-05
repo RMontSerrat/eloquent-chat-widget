@@ -17,7 +17,7 @@ A modern, embeddable chat widget with AI integration for React applications. Bui
 ## 🎨 Design
 
 - **Primary color**: `#f9f7f1`
-- **Primary font**: Erode (serif)
+- **Primary font**: Geist
 - Clean and modern interface
 - Smooth animations
 - Clear visual indicators (online/offline, maintenance)
