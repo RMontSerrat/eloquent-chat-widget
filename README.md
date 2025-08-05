@@ -318,19 +318,67 @@ EloquentChatWidget.init({
 
 ### NPM Registry
 
-```bash
-# Build
-npm run build
+#### Publishing Requirements
 
-# Publish
-npm publish
+- NPM account (register at [npmjs.com](https://www.npmjs.com/))
+- Node.js >=22.18.0 and npm >=8.0.0
+- Working build (`npm run build`)
+- Passing tests (`npm run test`)
+
+#### Pre-publishing Setup
+
+1. **Check if you're logged in to npm:**
+```bash
+npm whoami
 ```
 
-### CDN
+2. **Login if needed:**
+```bash
+npm login
+```
 
-Files are automatically available via:
-- unpkg: `https://unpkg.com/eloquent-chat-widget/`
-- jsDelivr: `https://cdn.jsdelivr.net/npm/eloquent-chat-widget/`
+3. **Verify package configuration:**
+```bash
+npm run publish:check
+```
+
+#### Publishing
+
+```bash
+# 1. Verify build is working
+npm run build
+
+# 2. Run tests
+npm run test
+
+# 3. Check what will be included in the package
+npm run publish:check
+
+# 4. Publish (prepublishOnly will run build automatically)
+npm run publish:npm
+```
+
+#### Useful Commands
+
+```bash
+# Check current version
+npm version
+
+# Update patch version (1.0.0 -> 1.0.1)
+npm version patch
+
+# Update minor version (1.0.0 -> 1.1.0)
+npm version minor
+
+# Update major version (1.0.0 -> 2.0.0)
+npm version major
+
+# Check published package info
+npm info eloquent-chat-widget
+
+# Test local installation
+npm pack
+```
 
 ## 🤝 Contributing
 

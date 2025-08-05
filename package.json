@@ -20,7 +20,8 @@
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage",
     "prepublishOnly": "npm run build",
-    "publish": "npm run build && npm publish"
+    "publish:npm": "npm publish",
+    "publish:check": "npm pack --dry-run"
   },
   "keywords": [
     "chat",
@@ -41,11 +42,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/eloquentai/chat-widget.git"
+    "url": "https://github.com/RMontSerrat/eloquent-chat-widget.git"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "homepage": "https://www.eloquentai.co/",
   "bugs": {
-    "url": "https://github.com/eloquentai/chat-widget/issues"
+    "url": "https://github.com/RMontSerrat/eloquent-chat-widget/issues"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
