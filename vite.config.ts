@@ -34,4 +34,9 @@ export default defineConfig({
     },
     cssCodeSplit: false,
   },
+  preview: {
+    open: '/example.html',
+    port: 4173,
+    host: true
+  },
 })

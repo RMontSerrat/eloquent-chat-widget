@@ -16,8 +16,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'primary': ['Erode', 'serif'],
-        'secondary': ['Geist', 'sans-serif'],
+        'primary': ['Geist', 'sans-serif'],
       },
       colors: {
         primary: '#6f33b7',

@@ -1,19 +1,18 @@
 import { create } from 'zustand';
 import { v4 as uuidv4 } from 'uuid';
 import { ChatStore, ChatMessage, ChatWidgetConfig } from '../types';
-import { generateLLMResponse } from '../utils/llm';
+import { generateLLMResponseWithAPI } from '../utils/llm';
 import { 
   loadChatFromStorage, 
   saveChatToStorage, 
   clearChatStorage 
 } from '../utils/storage';
+import { getCurrentTimestamp } from '../lib/utils';
 
 const defaultConfig: ChatWidgetConfig = {
-  title: 'Chat Support',
-  subtitle: 'We\'re here to help',
   placeholder: 'Type your message...',
   position: 'bottom-right',
-  theme: 'light',
+  mode: 'light',
   enablePersistence: true,
   maxMessages: 100,
   typingIndicatorDelay: 1000,
@@ -22,6 +21,8 @@ const defaultConfig: ChatWidgetConfig = {
   welcomeMessage: 'Hello! How can we help you today?',
   primaryColor: '#6f33b7',
   secondaryColor: '#64748b',
+  openaiApiKey: import.meta.env.VITE_OPENAI_API_KEY || '',
+  openaiModel: import.meta.env.VITE_OPENAI_MODEL || 'gpt-3.5-turbo',
 };
 
 export const useChatStore = create<ChatStore>((set, get) => ({
@@ -36,6 +37,7 @@ export const useChatStore = create<ChatStore>((set, get) => ({
   isLoading: false,
   error: null,
   config: defaultConfig,
+  onMessageCallback: undefined,
 
   // Widget control actions
   openWidget: () => {
@@ -95,8 +97,12 @@ export const useChatStore = create<ChatStore>((set, get) => ({
         setTimeout(resolve, config.typingIndicatorDelay || 1000)
       );
 
-      // Generate AI response
-      const response = await generateLLMResponse(content);
+      // Generate AI response using OpenAI API
+      const response = await generateLLMResponseWithAPI(
+        content, 
+        config.openaiApiKey || '', 
+        config.openaiModel || 'gpt-3.5-turbo'
+      );
       
       setTyping(false);
 
@@ -115,12 +121,12 @@ export const useChatStore = create<ChatStore>((set, get) => ({
   },
 
   addMessage: (message) => {
-    const { messages, config, saveToStorage } = get();
+    const { messages, config, saveToStorage, onMessageCallback } = get();
     
     const newMessage: ChatMessage = {
       ...message,
       id: uuidv4(),
-      timestamp: new Date(),
+      timestamp: getCurrentTimestamp(),
     };
 
     const updatedMessages = [...messages, newMessage];
@@ -133,6 +139,11 @@ export const useChatStore = create<ChatStore>((set, get) => ({
 
     set({ messages: updatedMessages });
     saveToStorage();
+    
+    // Call the onMessage callback if provided
+    if (onMessageCallback) {
+      onMessageCallback(newMessage);
+    }
   },
 
   clearMessages: () => {
@@ -221,6 +232,11 @@ export const useChatStore = create<ChatStore>((set, get) => ({
 
   setLoading: (isLoading) => {
     set({ isLoading });
+  },
+
+  // Callback actions
+  setOnMessageCallback: (callback) => {
+    set({ onMessageCallback: callback });
   },
 }));
 

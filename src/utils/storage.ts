@@ -1,4 +1,5 @@
 import { ChatState } from '../types';
+import { getCurrentTimestamp } from '../lib/utils';
 
 const STORAGE_KEY = 'eloquent-chat-widget';
 
@@ -36,7 +37,7 @@ export const saveChatToStorage = (data: Partial<ChatState>): void => {
     
     const dataToStore = {
       ...data,
-      lastSeen: new Date(),
+      lastSeen: getCurrentTimestamp(),
     };
     
     localStorage.setItem(STORAGE_KEY, JSON.stringify(dataToStore));

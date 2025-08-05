@@ -28,11 +28,9 @@ export interface ChatWidgetConfig {
   apiKey?: string;
   primaryColor?: string;
   secondaryColor?: string;
-  title?: string;
-  subtitle?: string;
   placeholder?: string;
   position?: 'bottom-right' | 'bottom-left' | 'top-right' | 'top-left';
-  theme?: 'light' | 'dark';
+  mode?: 'light' | 'dark';
   enablePersistence?: boolean;
   maxMessages?: number;
   typingIndicatorDelay?: number;
@@ -40,6 +38,8 @@ export interface ChatWidgetConfig {
   maintenanceMessage?: string;
   welcomeMessage?: string;
   customStyles?: Record<string, string>;
+  openaiApiKey?: string;
+  openaiModel?: string;
 }
 
 export interface LLMResponse {
@@ -52,6 +52,7 @@ export interface ChatState extends ChatWidget {
   config: ChatWidgetConfig;
   isLoading: boolean;
   error: string | null;
+  onMessageCallback?: (message: ChatMessage) => void;
 }
 
 export interface ChatActions {
@@ -85,6 +86,9 @@ export interface ChatActions {
   // Error handling
   setError: (error: string | null) => void;
   setLoading: (isLoading: boolean) => void;
+  
+  // Callbacks
+  setOnMessageCallback: (callback?: (message: ChatMessage) => void) => void;
 }
 
 export type ChatStore = ChatState & ChatActions;

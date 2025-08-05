@@ -4,19 +4,19 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "../../lib/utils"
 
 const badgeVariants = cva(
-  "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-slate-950 focus:ring-offset-2",
+  "elq:inline-flex elq:items-center elq:rounded-full elq:border elq:px-2.5 elq:py-0.5 elq:text-xs elq:font-semibold elq:transition-colors elq:focus:outline-none elq:focus:ring-2 elq:focus:ring-slate-950 elq:focus:ring-offset-2",
   {
     variants: {
       variant: {
         default:
-          "border-transparent bg-slate-900 text-slate-50 hover:bg-slate-900/80",
+          "elq:border-transparent elq:bg-slate-900 elq:text-slate-50 elq:hover:bg-slate-900/80",
         secondary:
-          "border-transparent bg-slate-100 text-slate-900 hover:bg-slate-100/80",
+          "elq:border-transparent elq:bg-slate-100 elq:text-slate-900 elq:hover:bg-slate-100/80",
         destructive:
-          "border-transparent bg-red-500 text-slate-50 hover:bg-red-500/80",
-        outline: "text-slate-950",
-        online: "border-transparent bg-green-100 text-green-800",
-        offline: "border-transparent bg-red-100 text-red-800",
+          "elq:border-transparent elq:bg-red-500 elq:text-slate-50 elq:hover:bg-red-500/80",
+        outline: "elq:text-slate-950",
+        online: "elq:border-transparent elq:bg-green-100 elq:text-green-800",
+        offline: "elq:border-transparent elq:bg-red-100 elq:text-red-800",
       },
     },
     defaultVariants: {

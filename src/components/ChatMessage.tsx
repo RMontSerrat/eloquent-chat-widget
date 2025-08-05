@@ -17,18 +17,35 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({
   
   return (
     <div className={cn(
-      "flex w-full mb-4",
-      isUser ? "justify-end" : "justify-start"
+      "elq:flex elq:w-full elq:mb-4 elq:gap-2 elq:items-end",
+      isUser ? "elq:justify-end" : "elq:justify-start"
     )}>
+      {/* Avatar for assistant messages */}
+      {!isUser && (
+        <img 
+          src="https://logo.clearbit.com/eloquentai.co" 
+          alt="Eloquent AI"
+          className="elq:w-6 elq:h-6 elq:rounded-full elq:flex-shrink-0 elq:mt-1"
+          onError={(e) => {
+            // Fallback to a simple icon if logo fails to load
+            e.currentTarget.style.display = 'none';
+          }}
+        />
+      )}
+      
       <div className={cn(
-        "max-w-xs lg:max-w-md px-4 py-2 rounded-lg font-secondary bg-gray-100 text-gray-900 rounded-bl-sm",
+        "elq:max-w-xs lg:elq:max-w-md elq:px-4 elq:py-3 elq:rounded-2xl elq:font-secondary",
+        isUser 
+          ? "bg-primary elq:text-white elq:rounded-br-sm" 
+          : "bg-chat-secondary text-chat-primary elq:rounded-bl-sm"
       )}>
-        <p className="text-sm leading-relaxed whitespace-pre-wrap mb-0">
+        <p className="elq:text-sm elq:leading-relaxed elq:whitespace-pre-wrap elq:mb-0">
           {message.content}
         </p>
         {showTimestamp && (
           <span className={cn(
-            "block text-xs mt-1 text-gray-500",
+            "elq:block elq:text-xs elq:mt-1",
+            isUser ? "elq:text-white/70" : "text-chat-muted"
           )}>
             {formatTimestamp ? formatTimestamp(message.timestamp) : 
              message.timestamp.toLocaleTimeString([], { 

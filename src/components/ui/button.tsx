@@ -5,26 +5,26 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "../../lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "elq:inline-flex elq:items-center elq:justify-center elq:whitespace-nowrap elq:rounded-md elq:text-sm elq:font-medium elq:ring-offset-white elq:transition-colors elq:focus-visible:outline-none elq:focus-visible:ring-2 elq:focus-visible:ring-slate-950 elq:focus-visible:ring-offset-2 elq:disabled:pointer-events-none elq:disabled:opacity-50",
   {
     variants: {
       variant: {
-        default: "bg-slate-900 text-slate-50 hover:bg-slate-900/90",
+        default: "elq:bg-slate-900 elq:text-slate-50 elq:hover:bg-slate-900/90",
         destructive:
-          "bg-red-500 text-slate-50 hover:bg-red-500/90",
+          "elq:bg-red-500 elq:text-slate-50 elq:hover:bg-red-500/90",
         outline:
-          "border border-slate-200 bg-white hover:bg-slate-100 hover:text-slate-900",
+          "elq:border elq:border-slate-200 elq:bg-white elq:hover:bg-slate-100 elq:hover:text-slate-900",
         secondary:
-          "bg-slate-100 text-slate-900 hover:bg-slate-100/80",
-        ghost: "hover:bg-slate-100 hover:text-slate-900",
-        link: "text-slate-900 underline-offset-4 hover:underline",
-        primary: "bg-primary text-white hover:bg-primary/90",
+          "elq:bg-slate-100 elq:text-slate-900 elq:hover:bg-slate-100/80",
+        ghost: "elq:hover:bg-slate-100 elq:hover:text-slate-900",
+        link: "elq:text-slate-900 elq:underline-offset-4 elq:hover:underline",
+        primary: "bg-primary elq:text-white elq:hover:bg-primary/90",
       },
       size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
-        icon: "h-10 w-10",
+        default: "elq:h-10 elq:px-4 elq:py-2",
+        sm: "elq:h-9 elq:rounded-md elq:px-3",
+        lg: "elq:h-11 elq:rounded-md elq:px-8",
+        icon: "elq:h-10 elq:w-10",
       },
     },
     defaultVariants: {

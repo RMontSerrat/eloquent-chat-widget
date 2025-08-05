@@ -5,57 +5,345 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eloquent Chat Widget - Demo</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+        :root {
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --shadow-color: rgba(15, 23, 42, 0.08);
+            --accent-color: #6f33b7;
+            --accent-hover: #5c2a99;
+        }
+
+        [data-mode="dark"] {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+            --shadow-color: rgba(0, 0, 0, 0.5);
+            --accent-color: #8b5cf6;
+            --accent-hover: #7c3aed;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Geist', sans-serif;
             margin: 0;
             padding: 20px;
-            background: #f5f5f5;
+            background: var(--bg-color);
+            color: var(--text-primary);
             min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            padding: 2rem;
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto 2rem;
+        }
+
+        .mode-toggle {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px var(--shadow-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+        }
+
+        .mode-toggle:hover {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px var(--shadow-color);
+        }
+
+        .mode-toggle:hover svg {
+            color: white;
+        }
+
+        .mode-toggle svg {
+            width: 20px;
+            height: 20px;
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px var(--shadow-color);
             text-align: center;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
         }
         
         h1 {
-            color: #333;
-            font-size: 1.5rem;
+            color: var(--text-primary);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 0 1rem;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            padding: 1.5rem;
+            background: var(--bg-color);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px var(--shadow-color);
+        }
+
+        .feature h3 {
+            color: var(--text-primary);
+            margin: 0 0 0.5rem;
+            font-size: 1rem;
             font-weight: 600;
-            margin-bottom: 1rem;
+        }
+
+        .feature p {
+            color: var(--text-secondary);
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .demo-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .demo-badge::before {
+            content: "✨";
+        }
+
+        @media (max-width: 1040px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 2rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="header">
+        <div></div>
+        <button class="mode-toggle" onclick="toggleMode()">
+            <svg class="sun-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            </svg>
+            <svg class="moon-icon" style="display: none;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+            </svg>
+        </button>
+    </div>
+
     <div class="container">
+        <div class="demo-badge">Live Demo</div>
         <h1>Eloquent Chat Widget</h1>
-        <p>O widget de chat aparecerá no canto da tela. Clique nele para testar!</p>
+        <p class="subtitle">Experience our intelligent chat widget with beautiful animations and seamless integration. The widget will appear in the bottom right corner - click to start chatting!</p>
+        
+        <div class="features">
+            <div class="feature">
+                <h3>🎨 Beautiful Design</h3>
+                <p>Modern UI with smooth animations and responsive design</p>
+            </div>
+            <div class="feature">
+                        <h3>🌙 Mode Support</h3>
+        <p>Light and dark modes with automatic switching</p>
+            </div>
+            <div class="feature">
+                <h3>⚡ Easy Integration</h3>
+                <p>Simple setup with customizable configuration options</p>
+            </div>
+            <div class="feature">
+                <h3>📱 Mobile Friendly</h3>
+                <p>Optimized for all screen sizes and devices</p>
+            </div>
+        </div>
     </div>
 
     <!-- Chat Widget -->
-    <link rel="stylesheet" href="./dist/eloquent-chat-widget.css">
-    <script src="./dist/eloquent-chat-widget.umd.js"></script>
+    <link rel="stylesheet" href="./eloquent-chat-widget.css">
+    <script src="./eloquent-chat-widget.umd.js"></script>
     
     <script>
-        // Initialize the widget
-        EloquentChatWidget.init({
-            config: {
-                title: 'Eloquent Chat',
-                subtitle: 'We\'re here to help',
-                position: 'bottom-right',
-                placeholder: 'Type your message...'
-            },
-            onReady: () => {
-                console.log('✅ Chat widget loaded successfully!');
-            },
-            onError: (error) => {
-                console.error('❌ Chat widget error:', error);
+        // Mode functionality
+        function toggleMode() {
+            const html = document.documentElement;
+            const currentMode = html.getAttribute('data-mode');
+            const newMode = currentMode === 'dark' ? 'light' : 'dark';
+            
+            html.setAttribute('data-mode', newMode);
+            localStorage.setItem('mode', newMode);
+            
+            // Toggle icons
+            const sunIcon = document.querySelector('.sun-icon');
+            const moonIcon = document.querySelector('.moon-icon');
+            
+            if (newMode === 'dark') {
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'block';
+            } else {
+                sunIcon.style.display = 'block';
+                moonIcon.style.display = 'none';
             }
+        }
+
+        // Initialize mode on page load
+        function initMode() {
+            const savedMode = localStorage.getItem('mode');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const initialMode = savedMode || (prefersDark ? 'dark' : 'light');
+            
+            document.documentElement.setAttribute('data-mode', initialMode);
+            console.log('🌙 Mode initialized:', initialMode, '| System prefers dark:', prefersDark);
+            
+            // Set initial icons
+            const sunIcon = document.querySelector('.sun-icon');
+            const moonIcon = document.querySelector('.moon-icon');
+            
+            if (initialMode === 'dark') {
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'block';
+            } else {
+                sunIcon.style.display = 'block';
+                moonIcon.style.display = 'none';
+            }
+            
+            // Initialize widget after mode is set
+            initWidget();
+        }
+
+        // Initialize everything when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initMode);
+        } else {
+            initMode();
+        }
+
+        // Listen for system mode changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('mode')) {
+                const newMode = e.matches ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-mode', newMode);
+                
+                const sunIcon = document.querySelector('.sun-icon');
+                const moonIcon = document.querySelector('.moon-icon');
+                
+                if (newMode === 'dark') {
+                    sunIcon.style.display = 'none';
+                    moonIcon.style.display = 'block';
+                } else {
+                    sunIcon.style.display = 'block';
+                    moonIcon.style.display = 'none';
+                }
+            }
+        });
+
+        // Initialize the widget with proper mode
+        function initWidget() {
+            // Ensure mode is set first
+            const currentMode = document.documentElement.getAttribute('data-mode');
+            console.log('🎨 Initializing widget with mode:', currentMode);
+            
+            EloquentChatWidget.init({
+                config: {
+                    position: 'bottom-right',
+                    placeholder: 'Type your message...',
+                    mode: currentMode || 'light',
+                    primaryColor: '#6f33b7'
+                },
+                onReady: () => {
+                    console.log('✅ Chat widget loaded successfully!', EloquentChatWidget);
+                },
+                onError: (error) => {
+                    console.error('❌ Chat widget error:', error);
+                },
+                onMessage: (message) => {
+                    console.log('📨 New message:', message);
+                    // You can handle the message here, e.g.:
+                    // - Send to analytics
+                    // - Store in external database
+                    // - Trigger custom notifications
+                }
+            });
+        }
+
+        // Update widget mode when page mode changes
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'data-mode') {
+                    const newMode = document.documentElement.getAttribute('data-mode');
+                    // Update widget mode using the new API
+                    if (window.EloquentChatWidget && window.EloquentChatWidget.updateMode) {
+                        window.EloquentChatWidget.updateMode(newMode);
+                    }
+                }
+            });
+        });
+
+        observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['data-mode']
         });
     </script>
 </body>

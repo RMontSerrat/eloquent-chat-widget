@@ -2,7 +2,7 @@ import React from 'react';
 import { createRoot, Root } from 'react-dom/client';
 import { ChatWidgetProvider } from './components/ChatWidgetProvider';
 import { ChatWidget } from './components/ChatWidget';
-import { EmbedOptions } from './types';
+import { EmbedOptions, ChatWidgetConfig, ChatMessage } from './types';
 import { useChatStore } from './store/chatStore';
 
 // Export components for direct usage
@@ -10,6 +10,47 @@ export { ChatWidget, ChatWidgetProvider };
 export { useChatStore } from './store/chatStore';
 export { useChat, useChatConfig, useChatPersistence } from './hooks/useChat';
 export * from './types';
+
+/**
+ * EloquentChat function - Similar to Intercom integration
+ * Call this function directly in your React components to configure the chat
+ */
+export const EloquentChat = (config: {
+  primaryColor?: string;
+  secondaryColor?: string;
+  position?: 'bottom-right' | 'bottom-left' | 'top-right' | 'top-left';
+  welcomeMessage?: string;
+  apiKey?: string;
+  mode?: 'light' | 'dark';
+  placeholder?: string;
+  offlineMessage?: string;
+  maintenanceMessage?: string;
+  onMessage?: (message: ChatMessage) => void;
+  [key: string]: any;
+}) => {
+  // Get store functions
+  console.log('config 3', config);
+  const { updateConfig } = useChatStore.getState();
+  
+  // Remove undefined values from config
+  const cleanConfig = Object.fromEntries(
+    Object.entries(config).filter(([_, value]) => value !== undefined)
+  );
+  
+  // Update configuration
+  if (Object.keys(cleanConfig).length > 0) {
+    updateConfig(cleanConfig);
+  }
+  
+  // Initialize widget if not already done (for browser environments)
+  if (typeof window !== 'undefined' && !widgetContainer) {
+    const { onMessage, ...configWithoutCallback } = cleanConfig;
+    initChatWidget({ 
+      config: configWithoutCallback,
+      onMessage: onMessage as ((message: ChatMessage) => void) | undefined
+    });
+  }
+};
 
 // Export UI components
 export * from './components/ui';
@@ -28,6 +69,7 @@ const initChatWidget = (options: EmbedOptions = {}) => {
     config = {},
     onReady,
     onError,
+    onMessage,
   } = options;
 
   try {
@@ -49,7 +91,7 @@ const initChatWidget = (options: EmbedOptions = {}) => {
     widgetRoot.render(
       React.createElement(ChatWidgetProvider, {
         config,
-        // Add event handlers via store subscriptions if needed
+        onMessage,
       })
     );
 
@@ -94,6 +136,14 @@ const destroyChatWidget = () => {
 const EloquentChatWidget = {
   init: initChatWidget,
   destroy: destroyChatWidget,
+  updateMode: (mode: 'light' | 'dark') => {
+    const { updateConfig } = useChatStore.getState();
+    updateConfig({ mode });
+  },
+  updateConfig: (config: Partial<ChatWidgetConfig>) => {
+    const { updateConfig } = useChatStore.getState();
+    updateConfig(config);
+  },
   ChatWidget,
   ChatWidgetProvider,
 };
@@ -107,12 +157,11 @@ const autoInit = () => {
   scripts.forEach((script) => {
     const element = script as HTMLScriptElement;
     const config = {
-      title: element.dataset.title,
-      subtitle: element.dataset.subtitle,
       primaryColor: element.dataset.primaryColor,
       secondaryColor: element.dataset.secondaryColor,
       position: element.dataset.position as any,
       apiKey: element.dataset.apiKey,
+      mode: element.dataset.mode as 'light' | 'dark',
     };
 
     // Remove undefined values
@@ -121,6 +170,8 @@ const autoInit = () => {
         delete (config as any)[key];
       }
     });
+
+    console.log('config1', config);
 
     initChatWidget({
       containerId: element.dataset.containerId,

@@ -15,7 +15,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "build:types": "tsc --emitDeclarationOnly",
-    "preview": "vite preview",
+    "preview": "npm run build && cp example.html dist/ && vite preview",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepublishOnly": "npm run build"
@@ -49,6 +49,7 @@
     "@radix-ui/react-slot": "^1.2.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "dayjs": "^1.11.13",
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.536.0",
     "tailwind-merge": "^3.3.1",

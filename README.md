@@ -17,7 +17,7 @@ A modern, embeddable chat widget with AI integration for React applications. Bui
 ## 🎨 Design
 
 The widget follows [Eloquent AI](https://www.eloquentai.co/) design system with:
-- **Primary color**: `#faf7f2`
+- **Primary color**: `#f9f7f1`
 - **Primary font**: Erode (serif)
 - **Secondary font**: Geist (sans-serif)
 - Clean and modern interface
@@ -41,30 +41,7 @@ npm install eloquent-chat-widget
 
 ## 🚀 Quick Start
 
-### Method 1: Script Tag (Simplest)
-
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="stylesheet" href="https://unpkg.com/eloquent-chat-widget/dist/eloquent-chat-widget.css">
-</head>
-<body>
-    <!-- Your content here -->
-    
-    <script 
-        src="https://unpkg.com/eloquent-chat-widget/dist/eloquent-chat-widget.umd.js"
-        data-eloquent-chat
-        data-title="Customer Support"
-        data-subtitle="We're here to help"
-        data-primary-color="#0ea5e9"
-        data-position="bottom-right">
-    </script>
-</body>
-</html>
-```
-
-### Method 2: Manual Initialization
+### Manual Initialization
 
 ```html
 <script src="https://unpkg.com/eloquent-chat-widget/dist/eloquent-chat-widget.umd.js"></script>
@@ -86,33 +63,31 @@ EloquentChatWidget.init({
 </script>
 ```
 
-### Method 3: React Integration
+
+### React Integration (Intercom-style)
 
 ```tsx
 import React from 'react';
-import { ChatWidgetProvider } from 'eloquent-chat-widget';
+import { EloquentChat } from 'eloquent-chat-widget';
 
-function App() {
+const MyPage = () => {
+  EloquentChat({
+    title: 'Customer Support',
+    subtitle: 'We\'re here to help',
+    primaryColor: '#0ea5e9',
+    position: 'bottom-right',
+    welcomeMessage: 'Hello! How can I help you today?'
+  });
+
   return (
-    <ChatWidgetProvider
-      config={{
-        title: 'Customer Support',
-        subtitle: 'We\'re here to help',
-        primaryColor: '#0ea5e9',
-        position: 'bottom-right',
-        welcomeMessage: 'Hello! How can I help you today?'
-      }}
-    >
-      {/* Your app here */}
-      <div>
-        <h1>My Application</h1>
-        {/* Widget will appear automatically */}
-      </div>
-    </ChatWidgetProvider>
+    <div>
+      <h1>My Application</h1>
+      {/* Your app content */}
+    </div>
   );
-}
+};
 
-export default App;
+export default MyPage;
 ```
 
 ## ⚙️ Configuration
@@ -127,7 +102,7 @@ interface ChatWidgetConfig {
   primaryColor?: string;             // Primary color
   secondaryColor?: string;           // Secondary color
   position?: 'bottom-right' | 'bottom-left' | 'top-right' | 'top-left';
-  theme?: 'light' | 'dark';
+  mode?: 'light' | 'dark';
   
   // Text content
   placeholder?: string;              // Input placeholder
@@ -152,12 +127,10 @@ interface ChatWidgetConfig {
 EloquentChatWidget.init({
   containerId: 'my-chat-widget',
   config: {
-    title: 'Virtual Assistant',
-    subtitle: 'Real-time responses',
     primaryColor: '#6366f1',
     secondaryColor: '#8b5cf6',
     position: 'bottom-left',
-    theme: 'light',
+    mode: 'light',
     placeholder: 'Type your message...',
     welcomeMessage: 'Welcome! How can I help you?',
     offlineMessage: 'We\'re offline right now. Leave us a message!',
@@ -198,7 +171,7 @@ const {
 // Configuration hook
 const {
   config,
-  updateTheme,
+  updateMode,
   updateColors,
   updateTexts
 } = useChatConfig();
@@ -410,7 +383,7 @@ MIT © [Eloquent AI](https://www.eloquentai.co/)
 - [ ] Native integration with more LLMs (Claude, Gemini, etc.)
 - [ ] Analytics dashboard
 - [ ] Multi-language support
-- [ ] Native dark theme
+- [ ] Native dark mode
 - [ ] CRM/Helpdesk integrations
 
 ---

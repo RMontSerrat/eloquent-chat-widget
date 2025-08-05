@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useChatStore } from '../store/chatStore';
 import { ChatWidgetConfig } from '../types';
+import { formatTimestamp, isRecentMessage, getCurrentTimestamp } from '../lib/utils';
 
 export const useChat = () => {
   const store = useChatStore();
@@ -68,28 +69,7 @@ export const useChat = () => {
     }
   }, [store.error, store]);
 
-  // Format timestamp for display
-  const formatTimestamp = useCallback((timestamp: Date) => {
-    const now = new Date();
-    const diff = now.getTime() - timestamp.getTime();
-    const minutes = Math.floor(diff / 60000);
-    const hours = Math.floor(diff / 3600000);
-    const days = Math.floor(diff / 86400000);
-
-    if (minutes < 1) return 'Just now';
-    if (minutes < 60) return `${minutes}m ago`;
-    if (hours < 24) return `${hours}h ago`;
-    if (days < 7) return `${days}d ago`;
-    
-    return timestamp.toLocaleDateString();
-  }, []);
-
-  // Check if message is recent (for styling purposes)
-  const isRecentMessage = useCallback((timestamp: Date) => {
-    const now = new Date();
-    const diff = now.getTime() - timestamp.getTime();
-    return diff < 300000; // 5 minutes
-  }, []);
+  // Use imported utility functions for date operations
 
   return {
     // State
@@ -114,7 +94,8 @@ export const useChat = () => {
     unreadCount: store.messages.filter(msg => 
       msg.sender === 'assistant' && 
       !store.isOpen && 
-      isRecentMessage(msg.timestamp)
+      isRecentMessage(msg.timestamp) &&
+      msg.content !== store.config.welcomeMessage
     ).length,
   };
 };
@@ -122,8 +103,8 @@ export const useChat = () => {
 export const useChatConfig = () => {
   const { config, updateConfig } = useChatStore();
   
-  const updateTheme = useCallback((theme: 'light' | 'dark') => {
-    updateConfig({ theme });
+  const updateMode = useCallback((mode: 'light' | 'dark') => {
+    updateConfig({ mode });
   }, [updateConfig]);
   
   const updateColors = useCallback((primaryColor: string, secondaryColor?: string) => {
@@ -134,8 +115,6 @@ export const useChatConfig = () => {
   }, [updateConfig]);
   
   const updateTexts = useCallback((texts: {
-    title?: string;
-    subtitle?: string;
     placeholder?: string;
     welcomeMessage?: string;
     offlineMessage?: string;
@@ -156,7 +135,7 @@ export const useChatConfig = () => {
   return {
     config,
     updateConfig,
-    updateTheme,
+    updateMode,
     updateColors,
     updateTexts,
     updateSettings,
@@ -175,7 +154,7 @@ export const useChatPersistence = () => {
     setIsLoading(true);
     try {
       saveToStorage();
-      setLastSaved(new Date());
+      setLastSaved(getCurrentTimestamp());
     } catch (error) {
       console.error('Failed to save chat data:', error);
     } finally {
