@@ -174,6 +174,10 @@ cd eloquent-chat-widget
 # Install dependencies
 npm install
 
+# Setup environment variables
+cp .env.example .env
+# Edit .env file with your OpenAI API key
+
 # Development
 npm run dev
 
