@@ -12,7 +12,6 @@
     "LICENSE"
   ],
   "scripts": {
-    "dev": "vite",
     "build": "tsc && vite build",
     "build:types": "tsc --emitDeclarationOnly",
     "preview": "npm run build && cp example.html dist/ && vite preview",
@@ -20,7 +19,8 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "publish": "npm run build && npm publish"
   },
   "keywords": [
     "chat",
@@ -35,6 +35,10 @@
   ],
   "author": "Eloquent AI",
   "license": "MIT",
+  "engines": {
+    "node": ">=22.18.0",
+    "npm": ">=8.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/eloquentai/chat-widget.git"
