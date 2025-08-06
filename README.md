@@ -119,7 +119,7 @@ interface ChatWidgetConfig {
 }
 ```
 
-### Complete Example
+### Complete Demo
 
 ```javascript
 EloquentChatWidget.init({
@@ -173,7 +173,7 @@ cd eloquent-chat-widget
 npm install
 
 # Setup environment variables
-cp .env.example .env
+cp .env.demo .env
 # Edit .env file with your OpenAI API key
 
 # Development
@@ -224,7 +224,7 @@ src/
 The widget comes with a simulated auto-response system, but can be easily integrated with real APIs:
 
 ```typescript
-// Example OpenAI integration
+// Demo OpenAI integration
 import { generateLLMResponseWithAPI } from 'eloquent-chat-widget';
 
 const response = await generateLLMResponseWithAPI(
@@ -288,7 +288,7 @@ EloquentChatWidget.init({
 The widget can be easily integrated with analytics tools:
 
 ```javascript
-// Example with Google Analytics
+// Demo with Google Analytics
 EloquentChatWidget.init({
   onMessage: (message) => {
     gtag('event', 'chat_message', {

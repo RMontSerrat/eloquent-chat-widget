@@ -1,4 +1,5 @@
 import React from 'react';
+import elqLogo from '@/static/images/eloquentai.png';
 
 interface TypingIndicatorProps {
   isVisible: boolean;
@@ -11,7 +12,7 @@ export const TypingIndicator: React.FC<TypingIndicatorProps> = ({ isVisible }) =
     <div className="elq:flex elq:w-full elq:mb-4 elq:gap-2 elq:justify-start elq:items-end">
       {/* Avatar for typing indicator */}
       <img 
-        src="https://logo.clearbit.com/eloquentai.co" 
+        src={elqLogo} 
         alt="Eloquent AI"
         className="elq:w-6 elq:h-6 elq:rounded-full elq:flex-shrink-0 elq:mt-1"
         onError={(e) => {

@@ -150,14 +150,14 @@
 /* These classes are available for customization in user CSS:
    
    .chat-widget-container - Styles the main widget container
-   Example: 
+   Demo: 
    .chat-widget-container { z-index: 10000; }
    
    .chat-widget-trigger - Styles the trigger button
-   Example:
+   Demo:
    .chat-widget-trigger { box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
    
    .chat-message-bubble.user - Styles user message bubbles
-   Example:
+   Demo:
    .chat-message-bubble.user { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
 */

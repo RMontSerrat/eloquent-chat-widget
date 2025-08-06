@@ -19,7 +19,7 @@ tailwind.config.js
 postcss.config.js
 
 # Documentation and examples (optional - remove if you want to include)
-example.html
+demo.html
 
 # IDE and OS files
 .vscode/

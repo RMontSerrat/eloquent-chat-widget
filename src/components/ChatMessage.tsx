@@ -1,6 +1,7 @@
 import React from 'react';
 import { ChatMessage as ChatMessageType } from '../types';
 import { cn } from '../lib/utils';
+import elqLogo from '@/static/images/eloquentai.png';
 
 interface ChatMessageProps {
   message: ChatMessageType;
@@ -23,7 +24,7 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({
       {/* Avatar for assistant messages */}
       {!isUser && (
         <img 
-          src="https://logo.clearbit.com/eloquentai.co" 
+          src={elqLogo} 
           alt="Eloquent AI"
           className="elq:w-6 elq:h-6 elq:rounded-full elq:flex-shrink-0 elq:mt-1"
           onError={(e) => {

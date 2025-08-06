@@ -2,7 +2,7 @@
 export default {
   content: [
     "./src/**/*.{js,ts,jsx,tsx}",
-    "./example.html",
+    "./demo.html",
   ],
   safelist: [
     'bg-primary',
