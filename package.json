@@ -15,7 +15,7 @@
     "build": "npm run clean && npm run build:types && vite build",
     "clean": "rm -rf dist",
     "build:types": "tsc --emitDeclarationOnly",
-    "preview": "npm run build && cp demo.html dist/ && echo '🚀 Building and starting preview server...' && echo '📖 The demo will open automatically at http://localhost:4173/demo.html' && vite preview",
+    "preview": "npm run build && cp -f demo.html dist/ && echo '🚀 Building and starting preview server...' && echo '📖 The demo will open automatically at http://localhost:4173/demo.html' && vite preview",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "test": "vitest",
     "test:ui": "vitest --ui",
