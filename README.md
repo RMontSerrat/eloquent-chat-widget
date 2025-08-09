@@ -294,23 +294,6 @@ EloquentChatWidget.init({
 });
 ```
 
-## 🌐 Internationalization
-
-```javascript
-EloquentChatWidget.init({
-  config: {
-    title: 'Customer Support',           // EN
-    // title: 'Atendimento ao Cliente',  // PT
-    // title: 'Soporte al Cliente',      // ES
-    // title: 'Support Client',          // FR
-    
-    welcomeMessage: 'Hello! How can I help you today?',
-    placeholder: 'Type your message...',
-    offlineMessage: 'We are currently offline. Leave us a message!'
-  }
-});
-```
-
 ## 🚀 Deployment
 
 ### NPM Registry
