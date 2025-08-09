@@ -42,7 +42,6 @@ jobs:
     - name: Prepare demo files
       run: |
         cp demo.html dist/
-        cp dist/eloquent-chat-widget.umd.js dist/eloquent-chat-widget.umd.js
 
     - name: Setup Pages
       uses: actions/configure-pages@v4
