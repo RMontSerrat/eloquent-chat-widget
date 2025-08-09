@@ -48,8 +48,6 @@ npm install eloquent-chat-widget
 <script>
 EloquentChatWidget.init({
   config: {
-    title: 'Customer Support',
-    subtitle: 'We\'re here to help',
     primaryColor: '#0ea5e9',
     position: 'bottom-right',
     welcomeMessage: 'Hello! How can I help you today?'
@@ -67,6 +65,7 @@ EloquentChatWidget.init({
 ```tsx
 import React from 'react';
 import { EloquentChat } from 'eloquent-chat-widget';
+
 
 const MyPage = () => {
   EloquentChat({

@@ -33,6 +33,7 @@ export default defineConfig({
       }
     },
     cssCodeSplit: false,
+    emptyOutDir: false, // Don't clear dist folder to preserve .d.ts files
   },
   preview: {
     open: '/demo.html',
