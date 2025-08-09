@@ -92,8 +92,6 @@ export default MyPage;
 ```typescript
 interface ChatWidgetConfig {
   // Appearance
-  title?: string;                    // Chat title
-  subtitle?: string;                 // Chat subtitle
   primaryColor?: string;             // Primary color
   secondaryColor?: string;           // Secondary color
   position?: 'bottom-right' | 'bottom-left' | 'top-right' | 'top-left';
