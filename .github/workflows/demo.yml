@@ -37,6 +37,9 @@ jobs:
       run: npm test
 
     - name: Build project
+      env:
+        VITE_OPENAI_API_KEY: ${{ secrets.VITE_OPENAI_API_KEY }}
+        VITE_OPENAI_MODEL: ${{ secrets.VITE_OPENAI_MODEL }}
       run: npm run build
 
     - name: Prepare demo files
