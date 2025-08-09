@@ -34,7 +34,6 @@ npm install eloquent-chat-widget
 
 ```html
 <script src="https://unpkg.com/eloquent-chat-widget/dist/eloquent-chat-widget.umd.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/eloquent-chat-widget/dist/eloquent-chat-widget.css">
 ```
 
 ## 🚀 Quick Start
@@ -43,7 +42,6 @@ npm install eloquent-chat-widget
 
 ```html
 <script src="https://unpkg.com/eloquent-chat-widget/dist/eloquent-chat-widget.umd.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/eloquent-chat-widget/dist/eloquent-chat-widget.css">
 
 <script>
 EloquentChatWidget.init({
