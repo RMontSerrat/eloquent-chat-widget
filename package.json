@@ -87,6 +87,7 @@
     "tailwindcss": "^4.1.11",
     "typescript": "^5.9.2",
     "vite": "^7.0.6",
+    "vite-plugin-css-injected-by-js": "^3.5.2",
     "vitest": "^2.1.8"
   }
 }

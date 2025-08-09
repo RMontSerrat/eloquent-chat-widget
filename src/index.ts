@@ -4,6 +4,7 @@ import { ChatWidgetProvider } from './components/ChatWidgetProvider';
 import { ChatWidget } from './components/ChatWidget';
 import { EmbedOptions, ChatWidgetConfig, ChatMessage } from './types';
 import { useChatStore } from './store/chatStore';
+import './styles/index.css';
 
 // Export components for direct usage
 export { ChatWidget, ChatWidgetProvider };
