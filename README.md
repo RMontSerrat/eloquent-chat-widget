@@ -2,6 +2,10 @@
 
 A modern, embeddable chat widget with AI integration for React applications. Built with TypeScript, Zustand for state management, and responsive design following frontend best practices.
 
+## 🚀 Live Demo
+
+**[DEMO](https://rmontserrat.github.io/eloquent-chat-widget/demo.html)** - Experience the widget in action!
+
 ## ✨ Features
 
 - 🚀 **Easy to integrate**: One line of code to add to your website
